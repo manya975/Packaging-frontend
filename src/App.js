@@ -4,10 +4,12 @@ import "./App.css";
 
 function App() {
   const [file, setFile] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const [res, setRes] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const upload = async () => {
+    if (!file) return;
     setLoading(true);
     const fd = new FormData();
     fd.append("image", file);
@@ -20,6 +22,12 @@ function App() {
     const data = await resp.json();
     setRes(data);
     setLoading(false);
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    setPreviewUrl(URL.createObjectURL(selectedFile));
   };
 
   return (
@@ -42,12 +50,23 @@ function App() {
           type="file"
           accept="image/*"
           capture="environment"
-          onChange={(e) => setFile(e.target.files[0])}
+          onChange={handleFileChange}
         />
         <button className="analyze-btn" onClick={upload} disabled={!file || loading}>
           {loading ? "Analyzing..." : "Analyze"}
         </button>
       </motion.div>
+
+      {previewUrl && (
+        <motion.div
+          className="image-preview"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          <img src={previewUrl} alt="Preview" className="preview-img" />
+        </motion.div>
+      )}
 
       {res && (
         <motion.div
