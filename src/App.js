@@ -23,55 +23,51 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <motion.h1
+    <div className="app-wrapper">
+      <motion.div
+        className="eco-card"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="title"
+        transition={{ duration: 0.5 }}
       >
-        🌱 Eco Packaging Adviser
-      </motion.h1>
+        <h1>🌿 Eco Packaging Classifier</h1>
+        <p className="subtitle">Know your material's environmental impact</p>
 
-      <motion.div
-        className="upload-section"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.5 }}
-      >
-        <input
-          type="file"
-          accept="image/*"
-          capture="environment"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
-        <button className="analyze-btn" onClick={upload} disabled={!file || loading}>
-          {loading ? "Analyzing..." : "Analyze"}
-        </button>
+        <div className="upload-box">
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+          <button
+            onClick={upload}
+            disabled={!file || loading}
+            className="analyze-btn"
+          >
+            {loading ? "Analyzing..." : "Analyze"}
+          </button>
+        </div>
+
+        {res && (
+          <motion.div
+            className="result-box"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            {res.image && (
+              <img src={res.image} alt="Preview" className="preview-img" />
+            )}
+            <div className="result-data">
+              <p><strong>Material:</strong> {res.material}</p>
+              <p><strong>Confidence:</strong> {res.confidence}%</p>
+              <p><strong>CO₂:</strong> {res.co2} kg</p>
+              <p><strong>Recommendation:</strong> {res.recommendation}</p>
+            </div>
+          </motion.div>
+        )}
       </motion.div>
-
-      {res && (
-        <motion.div
-          className="result-card"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          {res.image && (
-            <img
-              src={res.image}
-              alt="Uploaded Preview"
-              className="preview-image"
-            />
-          )}
-          <div className="result-details">
-            <p><strong>Material:</strong> {res.material}</p>
-            <p><strong>Confidence:</strong> {res.confidence}%</p>
-            <p><strong>CO₂:</strong> {res.co2} kg</p>
-            <p><strong>Recommendation:</strong> {res.recommendation}</p>
-          </div>
-        </motion.div>
-      )}
     </div>
   );
 }
