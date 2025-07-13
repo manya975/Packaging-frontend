@@ -56,6 +56,19 @@ function App() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
         >
+          {res.image && (
+            <img
+              src={res.image}
+              alt="Uploaded Preview"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                borderRadius: "12px",
+                marginBottom: "16px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+              }}
+            />
+          )}
           <p><strong>Material:</strong> {res.material}</p>
           <p><strong>Confidence:</strong> {res.confidence}%</p>
           <p><strong>CO₂:</strong> {res.co2} kg</p>
