@@ -1,71 +1,82 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f7fa;
+  font-family: "Segoe UI", sans-serif;
+  background: #f0fdf4;
 }
 
-.app-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: white;
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.eco-card {
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-.title {
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   text-align: center;
-  font-size: 26px;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 24px;
 }
 
-.upload-section {
+.eco-card h1 {
+  font-size: 1.8rem;
+  color: #065f46;
+  margin-bottom: 0.2rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.upload-box {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .analyze-btn {
   background: #10b981;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
+  padding: 10px 24px;
   font-weight: bold;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: 0.3s;
 }
 
 .analyze-btn:hover {
   background: #059669;
 }
 
-.result-card {
+.result-box {
   background: #f9fafb;
   border-radius: 12px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-  margin-top: 20px;
-}
-
-.preview-image {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.result-details {
+  padding: 1rem;
+  margin-top: 1rem;
   text-align: left;
-  margin: 0 auto;
-  max-width: 400px;
-  font-size: 16px;
-  line-height: 1.6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.preview-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.result-data p {
+  font-size: 15px;
+  margin: 6px 0;
+  color: #1f2937;
 }
