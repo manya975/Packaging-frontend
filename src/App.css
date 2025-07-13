@@ -69,3 +69,17 @@ h1 {
   margin: 10px 0;
   line-height: 1.5;
 }
+.image-preview {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.preview-img {
+  max-height: 100px;
+  max-width: 40%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
+
