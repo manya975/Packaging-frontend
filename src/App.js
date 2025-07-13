@@ -28,12 +28,13 @@ function App() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        className="title"
       >
         🌱 Eco Packaging Adviser
       </motion.h1>
 
       <motion.div
-        className="upload-card"
+        className="upload-section"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
@@ -60,19 +61,15 @@ function App() {
             <img
               src={res.image}
               alt="Uploaded Preview"
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-                borderRadius: "12px",
-                marginBottom: "16px",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
-              }}
+              className="preview-image"
             />
           )}
-          <p><strong>Material:</strong> {res.material}</p>
-          <p><strong>Confidence:</strong> {res.confidence}%</p>
-          <p><strong>CO₂:</strong> {res.co2} kg</p>
-          <p><strong>Recommendation:</strong> {res.recommendation}</p>
+          <div className="result-details">
+            <p><strong>Material:</strong> {res.material}</p>
+            <p><strong>Confidence:</strong> {res.confidence}%</p>
+            <p><strong>CO₂:</strong> {res.co2} kg</p>
+            <p><strong>Recommendation:</strong> {res.recommendation}</p>
+          </div>
         </motion.div>
       )}
     </div>
